@@ -1,0 +1,24 @@
+{
+  "name": "majidmvulle/vehicle-bundle",
+  "license": "None",
+  "type": "library",
+  "description": "Library for managing vehicle makes, models and trims.",
+  "authors": [
+    {
+      "name": "Majid Mvulle",
+      "email": "majid@majidmvulle.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"MajidMvulle\\VehicleBundle\\": "src/"}
+  },
+  "require": {
+    "php": ">=5.6.15"
+  },
+  "require-dev": {
+    "doctrine/doctrine-bundle": "^1.3",
+    "symfony/console": "^2.8 || ^3.0",
+    "symfony/phpunit-bridge": "^2.8 || ^3.0",
+    "doctrine/orm": "^2.5"
+  }
+}
