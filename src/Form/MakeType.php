@@ -1,10 +1,10 @@
 <?php
 
-namespace MajidMvulle\VehicleBundle\Form;
+namespace MajidMvulle\Bundle\VehicleBundle\Form;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use MajidMvulle\UtilityBundle\ORM\EntityRepository;
-use MajidMvulle\VehicleBundle\Entity\Make;
+use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\OptionsResolver\OptionsResolver;

@@ -1,6 +1,6 @@
 <?php
 
-namespace MajidMvulle\VehicleBundle\Repository;
+namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
 use MajidMvulle\UtilityBundle\ORM\EntityRepository;
 

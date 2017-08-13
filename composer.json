@@ -10,7 +10,7 @@
     }
   ],
   "autoload": {
-    "psr-4": {"MajidMvulle\\VehicleBundle\\": "src/"}
+    "psr-4": {"MajidMvulle\\Bundle\\VehicleBundle\\": "src/"}
   },
   "require": {
     "php": ">=5.6.15",

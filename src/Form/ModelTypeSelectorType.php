@@ -1,10 +1,10 @@
 <?php
 
-namespace MajidMvulle\VehicleBundle\Form;
+namespace MajidMvulle\Bundle\VehicleBundle\Form;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use JMS\DiExtraBundle\Annotation as DI;
-use MajidMvulle\VehicleBundle\Form\DataTransformer\ModelTypeToIdTransformer;
+use MajidMvulle\Bundle\VehicleBundle\Form\DataTransformer\ModelTypeToIdTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;

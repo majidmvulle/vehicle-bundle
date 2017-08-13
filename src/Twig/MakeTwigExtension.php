@@ -1,6 +1,6 @@
 <?php
 
-namespace MajidMvulle\VehicleBundle\Twig;
+namespace MajidMvulle\Bundle\VehicleBundle\Twig;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use MajidMvulle\UtilityBundle\ORM\EntityRepository;

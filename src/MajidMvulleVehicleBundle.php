@@ -1,6 +1,6 @@
 <?php
 
-namespace MajidMvulle\VehicleBundle;
+namespace MajidMvulle\Bundle\VehicleBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

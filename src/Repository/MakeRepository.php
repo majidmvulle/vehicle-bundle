@@ -1,10 +1,10 @@
 <?php
 
-namespace MajidMvulle\VehicleBundle\Repository;
+namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
 use MajidMvulle\UtilityBundle\ORM\EntityRepository;
 use MajidMvulle\UtilityBundle\Request\Options\ListOptions;
-use MajidMvulle\VehicleBundle\Entity\Make;
+use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
 
 /**
  * Class MakeRepository.

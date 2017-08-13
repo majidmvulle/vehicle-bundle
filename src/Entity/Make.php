@@ -1,6 +1,6 @@
 <?php
 
-namespace MajidMvulle\VehicleBundle\Entity;
+namespace MajidMvulle\Bundle\VehicleBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,7 +13,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @author Majid Mvulle <majid@majidmvulle.com>
  *
  * @ORM\Table(name="majidmvulle_vehicle_make")
- * @ORM\Entity(repositoryClass="MajidMvulle\VehicleBundle\Repository\MakeRepository")
+ * @ORM\Entity(repositoryClass="MajidMvulle\Bundle\VehicleBundle\Repository\MakeRepository")
  * @Serializer\ExclusionPolicy("all")
  */
 class Make
@@ -21,7 +21,7 @@ class Make
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="MajidMvulle\VehicleBundle\Entity\Model", mappedBy="make")
+     * @ORM\OneToMany(targetEntity="MajidMvulle\Bundle\VehicleBundle\Entity\Model", mappedBy="make")
      */
     protected $models;
 

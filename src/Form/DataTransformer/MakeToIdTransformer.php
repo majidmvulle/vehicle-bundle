@@ -1,9 +1,9 @@
 <?php
 
-namespace MajidMvulle\VehicleBundle\Form\DataTransformer;
+namespace MajidMvulle\Bundle\VehicleBundle\Form\DataTransformer;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use MajidMvulle\VehicleBundle\Entity\Make;
+use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
