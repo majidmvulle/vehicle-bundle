@@ -3,7 +3,7 @@
 namespace MajidMvulle\Bundle\VehicleBundle\Form;
 
 use JMS\DiExtraBundle\Annotation as DI;
-use MajidMvulle\UtilityBundle\ORM\EntityRepository;
+use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
 use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bridge\Doctrine\ManagerRegistry;

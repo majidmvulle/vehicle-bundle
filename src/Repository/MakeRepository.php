@@ -2,8 +2,8 @@
 
 namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
-use MajidMvulle\UtilityBundle\ORM\EntityRepository;
-use MajidMvulle\UtilityBundle\Request\Options\ListOptions;
+use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
+use MajidMvulle\Bundle\UtilityBundle\Request\Options\ListOptions;
 use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
 
 /**

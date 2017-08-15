@@ -3,7 +3,7 @@
 namespace MajidMvulle\Bundle\VehicleBundle\Twig;
 
 use JMS\DiExtraBundle\Annotation as DI;
-use MajidMvulle\UtilityBundle\ORM\EntityRepository;
+use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
 
 /**
  * Class MakeTwigExtension.

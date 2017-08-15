@@ -1,0 +1,6 @@
+services:
+    wbc.vehicle.repository.make_repository:
+        class: MajidMvulle\Bundle\VehicleBundle\Repository\MakeRepository
+        factory: ['@doctrine', getRepository]
+        arguments:
+            - MajidMvulleBundleVehicleBundle:Make

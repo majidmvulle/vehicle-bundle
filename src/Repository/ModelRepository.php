@@ -2,7 +2,7 @@
 
 namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
-use MajidMvulle\UtilityBundle\ORM\EntityRepository;
+use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
 
 /**
  * Class ModelRepository.
