@@ -1,6 +1,6 @@
 <?php
 
-namespace Wbc\VehicleBundle\DependencyInjection;
+namespace MajidMvulle\Bundle\VehicleBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
