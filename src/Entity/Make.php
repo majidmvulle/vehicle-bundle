@@ -91,6 +91,7 @@ class Make
      * @var string
      *
      * @ORM\Column(name="logo_path", type="string", length=255, nullable=true)
+     * @Serializer\Expose()
      */
     private $logoPath;
 
