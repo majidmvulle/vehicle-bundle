@@ -3,6 +3,7 @@
 namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
 use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
+use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
 
 /**
  * Class ModelRepository.
@@ -44,6 +45,28 @@ class ModelRepository extends EntityRepository
             ->orderBy('model.name')
             ->setFirstResult($offset)
             ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param Make $make
+     * @param int  $year
+     *
+     * @return array
+     */
+    public function findByMakeYear(Make $make, $year)
+    {
+        return $this->createQueryBuilder('model')
+            ->innerJoin('model.make', 'make', 'WITH', 'make = :make')
+            ->innerJoin('model.modelTypes', 'modelType', 'WITH', 'modelType.model = model')
+            ->where('make.active = :active')
+            ->andWhere('model.active = :active')
+            ->andWhere('modelType.years LIKE :year')
+            ->setParameter(':make', $make)
+            ->setParameter('active', true)
+            ->setParameter(':year', '%"'.$year.'"%')
+            ->orderBy('model.name', 'ASC')
             ->getQuery()
             ->getResult();
     }

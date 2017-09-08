@@ -3,6 +3,7 @@
 namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
 use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
+use MajidMvulle\Bundle\VehicleBundle\Entity\Model;
 
 /**
  * Class ModelTypeRepository.
@@ -42,6 +43,28 @@ class ModelTypeRepository extends EntityRepository
             ->addGroupBy('modelType.bodyType')
             ->setFirstResult($offset)
             ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param Model $model
+     * @param $year
+     *
+     * @return array
+     */
+    public function findByModelYear(Model $model, $year)
+    {
+        return $this->createQueryBuilder('modelType')
+            ->innerJoin('modelType.model', 'model', 'WITH', 'model = :model')
+            ->innerJoin('model.make', 'make', 'WITH', 'model.make = make')
+            ->where('make.active = :active')
+            ->andWhere('model.active = :active')
+            ->andWhere('modelType.years LIKE :year')
+            ->setParameter(':model', $model)
+            ->setParameter('active', true)
+            ->setParameter(':year', '%"'.$year.'"%')
+            ->orderBy('modelType.trim', 'ASC')
             ->getQuery()
             ->getResult();
     }
