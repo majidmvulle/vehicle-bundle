@@ -33,7 +33,7 @@ class Make
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Serializer\Expose()
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -41,35 +41,35 @@ class Make
      * @ORM\Column(name="name", type="string", length=100)
      * @Serializer\Expose()
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="source", type="string", length=255, nullable=true)
      */
-    private $source;
+    protected $source;
 
     /**
      * @var string
      *
      * @ORM\Column(name="source_id", type="string", length=100, nullable=true)
      */
-    private $sourceId;
+    protected $sourceId;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="active", type="boolean", options={"default": true})
      */
-    private $active;
+    protected $active;
 
     /**
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255, nullable=true)
      */
-    private $country;
+    protected $country;
 
     /**
      * @var \DateTime
@@ -77,7 +77,7 @@ class Make
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime")
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
@@ -85,7 +85,14 @@ class Make
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="updated_at", type="datetime")
      */
-    private $updatedAt;
+    protected $updatedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="logo_path", type="string", length=255, nullable=true)
+     */
+    private $logoPath;
 
     /**
      * Constructor.
@@ -314,5 +321,29 @@ class Make
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Get logoPath.
+     *
+     * @return string
+     */
+    public function getLogoPath()
+    {
+        return $this->logoPath;
+    }
+
+    /**
+     * Set logoPath.
+     *
+     * @param $logoPath
+     *
+     * @return Make
+     */
+    public function setLogoPath($logoPath)
+    {
+        $this->logoPath = $logoPath;
+
+        return $this;
     }
 }
