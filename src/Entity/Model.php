@@ -280,7 +280,7 @@ class Model
     /**
      * Get modelTypes.
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ArrayCollection
      */
     public function getModelTypes()
     {

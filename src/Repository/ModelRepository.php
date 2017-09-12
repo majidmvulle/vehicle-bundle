@@ -4,6 +4,7 @@ namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
 use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
 use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
+use MajidMvulle\Bundle\VehicleBundle\Entity\Model;
 
 /**
  * Class ModelRepository.
@@ -13,6 +14,8 @@ use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
 class ModelRepository extends EntityRepository
 {
     /**
+     * Find one by id where modelTypes have year.
+     *
      * @param $source
      *
      * @return array
@@ -28,6 +31,8 @@ class ModelRepository extends EntityRepository
     }
 
     /**
+     * Find by makeId.
+     *
      * @param int $makeId
      * @param int $offset
      * @param int $limit
@@ -50,6 +55,8 @@ class ModelRepository extends EntityRepository
     }
 
     /**
+     * Find one by Make where modelTypes have year.
+     *
      * @param Make $make
      * @param int  $year
      *
@@ -65,9 +72,35 @@ class ModelRepository extends EntityRepository
             ->andWhere('modelType.years LIKE :year')
             ->setParameter(':make', $make)
             ->setParameter('active', true)
-            ->setParameter(':year', '%"'.$year.'"%')
+            ->setParameter(':year', '%'.$year.'%')
             ->orderBy('model.name', 'ASC')
             ->getQuery()
             ->getResult();
+    }
+
+    /**
+     * Find one by id where modelTypes have year.
+     *
+     * @param $id
+     * @param $year
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     *
+     * @return Model
+     */
+    public function findOneByModelYear($id, $year)
+    {
+        return $this->createQueryBuilder('model')
+            ->innerJoin('model.make', 'make', 'WITH', 'make = model.make')
+            ->innerJoin('model.modelTypes', 'modelType', 'WITH', 'modelType.model = model')
+            ->where('model.id = :modelId')
+            ->andWhere('make.active = :active')
+            ->andWhere('model.active = :active')
+            ->andWhere('modelType.years LIKE :year')
+            ->setParameter(':modelId', $id)
+            ->setParameter('active', true)
+            ->setParameter(':year', '%'.$year.'%')
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 }

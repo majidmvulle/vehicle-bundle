@@ -38,9 +38,9 @@ class VehicleController extends Controller
     /**
      * Gets Vehicle ModelTypes.
      *
-     * @CF\Route("/models/{modelId}/modelTypes/{year}", name="majidmvulle_vehicle_model_types", requirements={"makeId": "\d+", "year": "\d{4}"})
+     * @CF\Route("/models/{modelId}/modelTypes/{year}", name="majidmvulle_vehicle_model_types", requirements={"modelId": "\d+", "year": "\d{4}"})
      * @CF\Method("GET")
-     * @CF\ParamConverter("make", class="MajidMvulleVehicleBundle:Model", options={"mapping": {"modelId"="id"}})
+     * @CF\ParamConverter("model", class="MajidMvulleVehicleBundle:Model", options={"mapping": {"modelId"="id"}})
      *
      * @param Model $model
      * @param int   $year
