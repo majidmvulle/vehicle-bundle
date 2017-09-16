@@ -18,7 +18,7 @@ class OptionsType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(['label' => 'Vehicle Options', 'choices' => self::getOptions(), 'placeholder' => '']);
+        $resolver->setDefaults(['label' => 'Vehicle Options', 'choices' => array_flip(self::getOptions()), 'placeholder' => '']);
     }
 
     /**

@@ -20,7 +20,7 @@ class ColorType extends AbstractType
     {
         $resolver->setDefaults([
             'label' => 'Vehicle Body Color',
-            'choices' => self::getColors(),
+            'choices' => array_flip(self::getColors()),
             'placeholder' => '',
             'data_class' => null,
         ]);

@@ -20,7 +20,7 @@ class TransmissionType extends AbstractType
     {
         $resolver->setDefaults([
             'label' => 'Vehicle Transmission',
-            'choices' => self::getTransmissions(),
+            'choices' => array_flip(self::getTransmissions()),
             'placeholder' => '',
         ]);
     }

@@ -20,7 +20,7 @@ class TrimType extends AbstractType
     {
         $resolver->setDefaults([
             'label' => 'Vehicle Regional Specifications',
-            'choices' => self::getTrims(),
+            'choices' => array_flip(self::getTrims()),
             'placeholder' => '',
         ]);
     }

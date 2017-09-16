@@ -20,7 +20,7 @@ class SpecificationType extends AbstractType
     {
         $resolver->setDefaults([
             'label' => 'Vehicle Regional Specifications',
-            'choices' => self::getSpecifications(),
+            'choices' => array_flip(self::getSpecifications()),
             'placeholder' => '',
         ]);
     }
