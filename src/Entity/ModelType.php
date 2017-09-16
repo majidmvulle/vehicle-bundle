@@ -55,7 +55,7 @@ class ModelType
     /**
      * @var string
      *
-     * @ORM\Column(name="engine", type="smallint", length=5)
+     * @ORM\Column(name="engine", type="smallint", length=5, nullable=true)
      * @Serializer\Expose()
      */
     private $engine;
