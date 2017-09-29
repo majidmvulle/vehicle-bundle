@@ -1,5 +1,4 @@
 <?php
-
 namespace MajidMvulle\Bundle\VehicleBundle\Admin;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -23,10 +22,7 @@ class ModelAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('name', TextType::class)
-            ->add('make')
-            ->add('active', CheckboxType::class, ['required' => false])
-        ;
+        $form->add('name', TextType::class)->add('make')->add('sourceId')->add('active', CheckboxType::class, ['required' => false]);
     }
 
     /**
@@ -34,15 +30,7 @@ class ModelAdmin extends AbstractAdmin
      */
     protected function configureListFields(ListMapper $list)
     {
-        $list->addIdentifier('id')
-            ->add('name')
-            ->add('make')
-            ->add('active', 'checkbox', ['editable' => true])
-            ->add('sourceId')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('_action', 'actions', [
-                'actions' => ['show' => [], 'edit' => [], 'delete' => []], ]);
+        $list->addIdentifier('id')->add('name')->add('make')->add('active', 'checkbox', ['editable' => true])->add('sourceId')->add('createdAt')->add('updatedAt')->add('_action', 'actions', ['actions' => ['show' => [], 'edit' => [], 'delete' => []],]);
     }
 
     /**
@@ -58,13 +46,7 @@ class ModelAdmin extends AbstractAdmin
      */
     protected function configureShowFields(ShowMapper $show)
     {
-        $show->add('id')
-            ->add('name')
-            ->add('make')
-            ->add('active', 'checkbox')
-            ->add('sourceId')
-            ->add('createdAt')
-            ->add('updatedAt');
+        $show->add('id')->add('name')->add('make')->add('active', 'checkbox')->add('sourceId')->add('createdAt')->add('updatedAt');
     }
 
     /**

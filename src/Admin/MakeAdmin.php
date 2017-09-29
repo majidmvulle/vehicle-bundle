@@ -1,5 +1,4 @@
 <?php
-
 namespace MajidMvulle\Bundle\VehicleBundle\Admin;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -24,9 +23,7 @@ class MakeAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $form)
     {
-        $form->add('name', TextType::class)
-            ->add('active', CheckboxType::class, ['required' => false])
-            ->add('country', CountryType::class, ['required' => false, 'label' => 'Country of Origin']);
+        $form->add('name', TextType::class)->add('active', CheckboxType::class, ['required' => false])->add('source')->add('sourceId')->add('country', CountryType::class, ['required' => false, 'label' => 'Country of Origin']);
     }
 
     /**
@@ -34,16 +31,7 @@ class MakeAdmin extends AbstractAdmin
      */
     protected function configureListFields(ListMapper $list)
     {
-        $list->addIdentifier('id')
-            ->add('name')
-            ->add('active', 'checkbox', ['editable' => true])
-            ->add('source')
-            ->add('sourceId')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('_action', 'actions', [
-                'actions' => ['show' => [], 'edit' => [], 'delete' => [],],]);
-        ;
+        $list->addIdentifier('id')->add('name')->add('active', 'checkbox', ['editable' => true])->add('source')->add('sourceId')->add('createdAt')->add('updatedAt')->add('_action', 'actions', ['actions' => ['show' => [], 'edit' => [], 'delete' => [],],]);;
     }
 
     /**
@@ -59,13 +47,7 @@ class MakeAdmin extends AbstractAdmin
      */
     protected function configureShowFields(ShowMapper $show)
     {
-        $show->add('id')
-            ->add('name')
-            ->add('active', 'checkbox')
-            ->add('source')
-            ->add('sourceId')
-            ->add('createdAt')
-            ->add('updatedAt');
+        $show->add('id')->add('name')->add('active', 'checkbox')->add('source')->add('sourceId')->add('createdAt')->add('updatedAt');
     }
 
     /**
