@@ -3,6 +3,8 @@
 namespace MajidMvulle\Bundle\VehicleBundle\Admin;
 
 use MajidMvulle\Bundle\VehicleBundle\Entity\Model;
+use MajidMvulle\Bundle\VehicleBundle\Form\ModelYearType;
+use MajidMvulle\Bundle\VehicleBundle\Form\TransmissionType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -10,11 +12,8 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use MajidMvulle\Bundle\VehicleBundle\Form\ModelYearType;
-use MajidMvulle\Bundle\VehicleBundle\Form\TransmissionType;
 
 /**
  * Class ModelTypeAdmin.
@@ -30,12 +29,12 @@ class ModelTypeAdmin extends AbstractAdmin
     {
         $form->add('trim', TextType::class, ['label' => 'Trim Name'])
             ->add('model')
-            ->add('engine', IntegerType::class, ['help' => 'e.g. 2500 for a 2.5 litre engine'])
-            ->add('cylinders', IntegerType::class)
-            ->add('transmission', TransmissionType::class)
-            ->add('seats', IntegerType::class)
+            ->add('engine', IntegerType::class, ['help' => 'e.g. 2500 for a 2.5 litre engine', 'required' => false])
+            ->add('cylinders', IntegerType::class, ['required' => false])
+            ->add('transmission', TransmissionType::class, ['required' => false])
+            ->add('seats', IntegerType::class, ['required' => false])
             ->add('isGcc', CheckboxType::class, ['required' => false])
-            ->add('years', ModelYearType::class, ['multiple' => true])
+            ->add('years', ModelYearType::class, ['multiple' => true, 'required' => false])
         ;
     }
 
