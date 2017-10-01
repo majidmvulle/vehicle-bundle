@@ -13,6 +13,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class OptionsType extends AbstractType
 {
+    const BASIC_OPTION = 'basic';
+    const MID_OPTION = 'mid';
+    const FULL_OPTION = 'full';
+
     /**
      * {@inheritdoc}
      */
@@ -50,6 +54,6 @@ class OptionsType extends AbstractType
      */
     public static function getOptions()
     {
-        return ['basic' => 'Basic Option', 'mid' => 'Mid Option', 'full' => 'Full Option'];
+        return [self::BASIC_OPTION => 'Basic Option', self::MID_OPTION => 'Mid Option', self::FULL_OPTION => 'Full Option'];
     }
 }
