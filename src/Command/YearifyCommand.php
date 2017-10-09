@@ -36,7 +36,7 @@ class YearifyCommand extends ContainerAwareCommand
         $startYear = (int) $input->getArgument('startYear');
         $endYear = (int) $input->getArgument('endYear');
 
-        if ($startYear < $endYear) {
+        if ($startYear > $endYear) {
             throw new \RuntimeException('End year should be greater than Start year');
         }
 
