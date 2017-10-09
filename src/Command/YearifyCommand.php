@@ -51,8 +51,8 @@ class YearifyCommand extends ContainerAwareCommand
             $modelTypes = $entityManager->getRepository(ModelType::class)->findByYear($startYear, $offset, $batchSize);
             foreach ($modelTypes as $modelType) {
                 $_years = array_merge($years, $modelType->getYears());
-                asort($_years);
-                $modelType->setYears($_years);
+                arsort($_years);
+                $modelType->setYears(array_values(array_unique($_years)));
             }
             $entityManager->flush();
             $offset += $batchSize;
