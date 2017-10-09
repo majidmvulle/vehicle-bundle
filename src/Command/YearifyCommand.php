@@ -10,11 +10,11 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class Yearify.
+ * Class YearifyCommand.
  *
  * @author Majid Mvulle <majid@majidmvulle.com>
  */
-class Yearify extends ContainerAwareCommand
+class YearifyCommand extends ContainerAwareCommand
 {
     /**
      * {@inheritdoc}
