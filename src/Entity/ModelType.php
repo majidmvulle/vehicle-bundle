@@ -513,7 +513,21 @@ class ModelType
      */
     public function getName()
     {
-        return sprintf('%s - %s - %s (%sL)', $this->trim, $this->bodyType, $this->transmission, number_format($this->engine / 1000, 1));
+        $name = $this->trim;
+
+        if ($this->bodyType) {
+            $name = sprintf('%s - %s', $name, $this->bodyType);
+        }
+
+        if ($this->transmission) {
+            $name = sprintf('%s - %s', $name, $this->transmission);
+        }
+
+        if ($this->engine) {
+            $name = sprintf('%s (%sL)', $name, number_format($this->engine / 1000, 1));
+        }
+
+        return $name;
     }
 
     /**

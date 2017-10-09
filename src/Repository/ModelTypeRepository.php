@@ -68,4 +68,21 @@ class ModelTypeRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @param int $year
+     * @param int $offset
+     * @param int $limit
+     *
+     * @return array
+     */
+    public function findByYear($year, $offset, $limit)
+    {
+        return $this->createQueryBuilder('modelType')
+            ->where('modelType.years LIKE :year')
+            ->setParameter(':year', '%"'.$year.'"%')
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery()->getResult();
+    }
 }
