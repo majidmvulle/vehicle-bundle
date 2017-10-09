@@ -27,13 +27,9 @@ class ModelTypeRepository extends EntityRepository
             ->innerJoin('model.make', 'make');
 
         if ($modelId) {
-            $queryBuilder->where('model.id = :modelId')
-                ->setParameter('modelId', $modelId)
-                ->addGroupBy('model.id');
+            $queryBuilder->where('model.id = :modelId')->setParameter('modelId', $modelId)->addGroupBy('model.id');
         } elseif ($makeId) {
-            $queryBuilder->where('make.id = :makeId')
-                ->setParameter('makeId', $makeId)
-                ->addGroupBy('make.id');
+            $queryBuilder->where('make.id = :makeId')->setParameter('makeId', $makeId)->addGroupBy('make.id');
         }
 
         return $queryBuilder->addOrderBy('model.name')
@@ -55,6 +51,8 @@ class ModelTypeRepository extends EntityRepository
      */
     public function findByModelYear(Model $model, $year)
     {
+        $year = (int) $year;
+
         return $this->createQueryBuilder('modelType')
             ->innerJoin('modelType.model', 'model', 'WITH', 'model = :model')
             ->innerJoin('model.make', 'make', 'WITH', 'model.make = make')
@@ -63,7 +61,7 @@ class ModelTypeRepository extends EntityRepository
             ->andWhere('modelType.years LIKE :year')
             ->setParameter(':model', $model)
             ->setParameter('active', true)
-            ->setParameter(':year', '%"'.$year.'"%')
+            ->setParameter(':year', '%'.$year.'%')
             ->orderBy('modelType.trim', 'ASC')
             ->getQuery()
             ->getResult();
@@ -80,9 +78,10 @@ class ModelTypeRepository extends EntityRepository
     {
         return $this->createQueryBuilder('modelType')
             ->where('modelType.years LIKE :year')
-            ->setParameter(':year', '%"'.$year.'"%')
+            ->setParameter(':year', '%'.$year.'%')
             ->setFirstResult($offset)
             ->setMaxResults($limit)
-            ->getQuery()->getResult();
+            ->getQuery()
+            ->getResult();
     }
 }

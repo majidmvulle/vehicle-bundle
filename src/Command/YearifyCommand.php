@@ -41,20 +41,19 @@ class YearifyCommand extends ContainerAwareCommand
         }
 
         $batchSize = (int) $input->getOption('batch-size');
-        $entityManager = $this->getContainer()->get('doctrine.orm.entity_manager.abstract');
+        $entityManager = $this->getContainer()->get('doctrine.orm.entity_manager');
         $offset = 0;
         $years = range($startYear, $endYear);
+
         $output->writeln('Started Yearizing');
 
         do {
             $modelTypes = $entityManager->getRepository(ModelType::class)->findByYear($startYear, $offset, $batchSize);
-
             foreach ($modelTypes as $modelType) {
                 $_years = array_merge($years, $modelType->getYears());
                 asort($_years);
                 $modelType->setYears($_years);
             }
-
             $entityManager->flush();
             $offset += $batchSize;
         } while ($modelTypes);
