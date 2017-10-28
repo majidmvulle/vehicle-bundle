@@ -32,6 +32,10 @@
   "repositories": [
     {
       "type": "vcs",
+      "url": "git@bitbucket.org:majidmvulle/vehicle-bundle.git"
+    },
+    {
+      "type": "vcs",
       "url": "git@bitbucket.org:majidmvulle/utility-bundle.git"
     }
   ]
