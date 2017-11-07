@@ -31,7 +31,7 @@ class Model
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="MajidMvulle\Bundle\VehicleBundle\Entity\ModelType", mappedBy="model")
-     * @ORM\OrderBy({"engine" = "ASC", "bodyType" = "ASC"})
+     * @ORM\OrderBy({"trim" = "ASC", "engine" = "ASC", "bodyType" = "ASC"})
      */
     protected $modelTypes;
     /**
