@@ -18,7 +18,7 @@
     "doctrine/orm": "^2.6",
     "gedmo/doctrine-extensions": "^2.4",
     "jms/serializer": "^1.10.0",
-    "majidmvulle/utility-bundle": "^0.1.7",
+    "majidmvulle/utility-bundle": "^0.1.9",
     "sensio/framework-extra-bundle": "^5.1",
     "sonata-project/admin-bundle": "^3.29.0",
     "symfony/form": "^3.0 || ^4.0",
