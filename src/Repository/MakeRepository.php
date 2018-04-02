@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
 use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
@@ -13,23 +15,16 @@ use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
  */
 class MakeRepository extends EntityRepository
 {
-    /**
-     * Override findAll() to always sort by `name`.
-     *
-     * @return array
-     */
-    public function findAll()
+    public function findAll(): array
     {
         return $this->findBy(['active' => true], ['name' => 'ASC']);
     }
 
-    /**
-     * @return array
-     */
-    public function findAllAsChoices()
+    public function findAllAsChoices(): array
     {
         $data = [];
         $makes = $this->findAll();
+
         /** @var Make $make */
         foreach ($makes as $make) {
             $data[$make->getId()] = $make->getName();
@@ -38,14 +33,7 @@ class MakeRepository extends EntityRepository
         return $data;
     }
 
-    /**
-     * Finds all Makes paginated.
-     *
-     * @param ListOptions $options
-     *
-     * @return array
-     */
-    public function findAllPaginated(ListOptions $options)
+    public function findAllPaginated(ListOptions $options): array
     {
         $qb = $this->_em->createQueryBuilder('make')
             ->select('make')

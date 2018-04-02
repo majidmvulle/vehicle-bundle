@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
 use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
@@ -13,14 +15,7 @@ use MajidMvulle\Bundle\VehicleBundle\Entity\Model;
  */
 class ModelRepository extends EntityRepository
 {
-    /**
-     * Find one by id where modelTypes have year.
-     *
-     * @param $source
-     *
-     * @return array
-     */
-    public function findByMakeSource($source)
+    public function findByMakeSource($source): array
     {
         return $this->createQueryBuilder('model')
             ->innerJoin('model.make', 'make')
@@ -30,16 +25,7 @@ class ModelRepository extends EntityRepository
             ->getResult();
     }
 
-    /**
-     * Find by makeId.
-     *
-     * @param int $makeId
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return array
-     */
-    public function findByMakeId($makeId, $offset = 0, $limit = 200)
+    public function findByMakeId($makeId, $offset = 0, $limit = 200): array
     {
         return $this->createQueryBuilder('model')
             ->innerJoin('model.make', 'make')
@@ -54,19 +40,16 @@ class ModelRepository extends EntityRepository
             ->getResult();
     }
 
-    /**
-     * Find one by Make where modelTypes have year.
-     *
-     * @param Make $make
-     * @param int  $year
-     *
-     * @return array
-     */
-    public function findByMakeYear(Make $make, $year)
+    public function findByMakeYear(Make $make, $year): array
     {
         return $this->createQueryBuilder('model')
             ->innerJoin('model.make', 'make', 'WITH', 'make = :make')
-            ->innerJoin('model.modelTypes', 'modelType', 'WITH', 'modelType.model = model')
+            ->innerJoin(
+                'model.modelTypes',
+                'modelType',
+                'WITH',
+                'modelType.model = model'
+            )
             ->where('make.active = :active')
             ->andWhere('model.active = :active')
             ->andWhere('modelType.years LIKE :year')
@@ -79,20 +62,18 @@ class ModelRepository extends EntityRepository
     }
 
     /**
-     * Find one by id where modelTypes have year.
-     *
-     * @param $id
-     * @param $year
-     *
      * @throws \Doctrine\ORM\NonUniqueResultException
-     *
-     * @return Model
      */
-    public function findOneByModelYear($id, $year)
+    public function findOneByModelYear($id, $year): ?Model
     {
         return $this->createQueryBuilder('model')
             ->innerJoin('model.make', 'make', 'WITH', 'make = model.make')
-            ->innerJoin('model.modelTypes', 'modelType', 'WITH', 'modelType.model = model')
+            ->innerJoin(
+                'model.modelTypes',
+                'modelType',
+                'WITH',
+                'modelType.model = model'
+            )
             ->where('model.id = :modelId')
             ->andWhere('make.active = :active')
             ->andWhere('model.active = :active')

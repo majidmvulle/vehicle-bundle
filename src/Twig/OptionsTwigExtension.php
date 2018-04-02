@@ -1,40 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Twig;
 
-use JMS\DiExtraBundle\Annotation as DI;
 use MajidMvulle\Bundle\VehicleBundle\Form\OptionsType;
 
 /**
  * Class OptionsTwigExtension.
  *
  * @author Majid Mvulle <majid@majidmvulle.com>
- *
- * @DI\Service("majidmvulle.vehicle.twig.options_extension", public=false)
- * @DI\Tag(name="twig.extension")
  */
 class OptionsTwigExtension extends \Twig_Extension
 {
-    /**
-     * @return array
-     */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [new \Twig_SimpleFunction('getVehicleOptions', [$this, 'getVehicleOptions'])];
     }
 
-    /**
-     * @return array
-     */
-    public function getVehicleOptions()
+    public function getVehicleOptions(): array
     {
         return OptionsType::getOptions();
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'getVehicleOptions';
     }

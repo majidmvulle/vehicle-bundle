@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Form\DataTransformer;
 
 use Doctrine\Common\Persistence\ObjectManager;
@@ -19,24 +21,12 @@ class ModelTypeToIdTransformer implements DataTransformerInterface
      */
     private $manager;
 
-    /**
-     * Constructor.
-     *
-     * @param ObjectManager $manager
-     */
     public function __construct(ObjectManager $manager)
     {
         $this->manager = $manager;
     }
 
-    /**
-     * Transforms an object (Model) to a string (id).
-     *
-     * @param ModelType|null $modelType
-     *
-     * @return string
-     */
-    public function transform($modelType)
+    public function transform($modelType): string
     {
         if (null === $modelType) {
             return '';
@@ -45,16 +35,7 @@ class ModelTypeToIdTransformer implements DataTransformerInterface
         return $modelType->getId();
     }
 
-    /**
-     * Transforms a string (id) to an object (ModelType).
-     *
-     * @param string $modelTypeId
-     *
-     * @throws TransformationFailedException if object (Model) is not found
-     *
-     * @return ModelType|null
-     */
-    public function reverseTransform($modelTypeId)
+    public function reverseTransform($modelTypeId): ?ModelType
     {
         if (!$modelTypeId) {
             return;
@@ -62,8 +43,10 @@ class ModelTypeToIdTransformer implements DataTransformerInterface
 
         $modelType = $this->manager->getRepository('MajidMvulleVehicleBundle:ModelType')->find($modelTypeId);
 
-        if ($modelType === null) {
-            throw new TransformationFailedException(sprintf('Vehicle Model Type with id "%s" does not exist!', $modelTypeId));
+        if (null === $modelType) {
+            throw new TransformationFailedException(
+                sprintf('Vehicle Model Type with id "%s" does not exist!', $modelTypeId)
+            );
         }
 
         return $modelType;

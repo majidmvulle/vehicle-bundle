@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -272,7 +274,7 @@ class Model
      *
      * @param ModelType $modelType
      */
-    public function removeModelType(ModelType $modelType)
+    public function removeModelType(ModelType $modelType): void
     {
         $this->modelTypes->removeElement($modelType);
     }

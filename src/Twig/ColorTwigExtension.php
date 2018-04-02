@@ -1,40 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Twig;
 
-use JMS\DiExtraBundle\Annotation as DI;
 use MajidMvulle\Bundle\VehicleBundle\Form\ColorType;
 
 /**
  * Class ColorTwigExtension.
  *
  * @author Majid Mvulle <majid@majidmvulle.com>
- *
- * @DI\Service("majidmvulle.vehicle.twig.color_extension", public=false)
- * @DI\Tag(name="twig.extension")
  */
 class ColorTwigExtension extends \Twig_Extension
 {
-    /**
-     * @return array
-     */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [new \Twig_SimpleFunction('getColors', [$this, 'getColors'])];
     }
 
-    /**
-     * @return array
-     */
-    public function getColors()
+    public function getColors(): array
     {
         return ColorType::getColors();
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'getColors';
     }

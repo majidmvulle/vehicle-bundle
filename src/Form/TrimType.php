@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -13,10 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TrimType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'label' => 'Vehicle Regional Specifications',
@@ -25,34 +24,22 @@ class TrimType extends AbstractType
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getParent()
+    public function getParent(): string
     {
         return ChoiceType::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
-        return 'majidmvulle_vehicle_trim_type';
+        return '';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->getBlockPrefix();
     }
 
-    /**
-     * @return array
-     */
-    public static function getTrims()
+    public static function getTrims(): array
     {
         return ['base' => 'Base option', 'mid' => 'Mid option', 'full' => 'Full option', 'other' => 'Other'];
     }

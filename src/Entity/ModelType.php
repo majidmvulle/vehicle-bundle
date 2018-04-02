@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;

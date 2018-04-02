@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -17,43 +19,39 @@ class OptionsType extends AbstractType
     const MID_OPTION = 'mid';
     const FULL_OPTION = 'full';
 
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['label' => 'Vehicle Options', 'choices' => array_flip(self::getOptions()), 'placeholder' => '']);
+        $resolver->setDefaults([
+            'label' => 'Vehicle Options',
+            'choices' => array_flip(self::getOptions()),
+            'placeholder' => '',
+        ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getParent()
+    public function getParent(): string
     {
         return ChoiceType::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
-        return 'majidmvulle_vehicle_options_type';
+        return '';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->getBlockPrefix();
     }
 
-    /**
-     * @return array
-     */
-    public static function getOptions()
+    public static function getOptions(): array
     {
-        return [self::BASIC_OPTION => 'Basic Option', self::MID_OPTION => 'Mid Option', self::FULL_OPTION => 'Full Option'];
+        return [
+            self::BASIC_OPTION => 'Basic Option',
+            self::MID_OPTION => 'Mid Option',
+            self::FULL_OPTION => 'Full Option',
+        ];
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -13,10 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class ColorType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'label' => 'Vehicle Body Color',
@@ -26,36 +25,22 @@ class ColorType extends AbstractType
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getParent()
+    public function getParent(): string
     {
         return ChoiceType::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
-        return 'majidmvulle_vehicle_color_type';
+        return '';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return $this->getBlockPrefix();
     }
 
-    /**
-     * Gets Colors.
-     *
-     * @return array
-     */
-    public static function getColors()
+    public static function getColors(): array
     {
         return [
             'white' => 'White',

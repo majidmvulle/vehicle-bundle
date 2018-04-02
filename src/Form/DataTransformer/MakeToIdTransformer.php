@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Form\DataTransformer;
 
 use Doctrine\Common\Persistence\ObjectManager;
@@ -19,24 +21,12 @@ class MakeToIdTransformer implements DataTransformerInterface
      */
     private $manager;
 
-    /**
-     * Constructor.
-     *
-     * @param ObjectManager $manager
-     */
     public function __construct(ObjectManager $manager)
     {
         $this->manager = $manager;
     }
 
-    /**
-     * Transforms an object (Make) to a string (id).
-     *
-     * @param Make|null $make
-     *
-     * @return string
-     */
-    public function transform($make)
+    public function transform($make): string
     {
         if (null === $make) {
             return '';
@@ -45,16 +35,7 @@ class MakeToIdTransformer implements DataTransformerInterface
         return $make->getId();
     }
 
-    /**
-     * Transforms a string (id) to an object (Make).
-     *
-     * @param string $makeId
-     *
-     * @throws TransformationFailedException if object (Make) is not found
-     *
-     * @return Make|null
-     */
-    public function reverseTransform($makeId)
+    public function reverseTransform($makeId): ?Make
     {
         if (!$makeId) {
             return;
@@ -62,8 +43,10 @@ class MakeToIdTransformer implements DataTransformerInterface
 
         $make = $this->manager->getRepository(Make::class)->find($makeId);
 
-        if ($make === null) {
-            throw new TransformationFailedException(sprintf('Vehicle Make with id "%s" does not exist!', $makeId));
+        if (null === $make) {
+            throw new TransformationFailedException(
+                sprintf('Vehicle Make with id "%s" does not exist!', $makeId)
+            );
         }
 
         return $make;

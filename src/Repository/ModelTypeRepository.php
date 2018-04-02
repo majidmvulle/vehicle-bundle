@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Repository;
 
 use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
@@ -12,15 +14,7 @@ use MajidMvulle\Bundle\VehicleBundle\Entity\Model;
  */
 class ModelTypeRepository extends EntityRepository
 {
-    /**
-     * @param int $makeId
-     * @param int $modelId
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return array
-     */
-    public function findAllBy($makeId = null, $modelId = null, $offset = 0, $limit = 300)
+    public function findAllBy($makeId = null, $modelId = null, $offset = 0, $limit = 300): array
     {
         $queryBuilder = $this->createQueryBuilder('modelType')
             ->innerJoin('modelType.model', 'model')
@@ -43,13 +37,7 @@ class ModelTypeRepository extends EntityRepository
             ->getResult();
     }
 
-    /**
-     * @param Model $model
-     * @param $year
-     *
-     * @return array
-     */
-    public function findByModelYear(Model $model, $year)
+    public function findByModelYear(Model $model, $year): array
     {
         $year = (int) $year;
 
@@ -67,14 +55,7 @@ class ModelTypeRepository extends EntityRepository
             ->getResult();
     }
 
-    /**
-     * @param int $year
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return array
-     */
-    public function findByYear($year, $offset, $limit)
+    public function findByYear($year, $offset, $limit): array
     {
         return $this->createQueryBuilder('modelType')
             ->where('modelType.years LIKE :year')

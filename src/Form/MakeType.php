@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Form;
 
-use JMS\DiExtraBundle\Annotation as DI;
 use MajidMvulle\Bundle\UtilityBundle\ORM\EntityRepository;
 use MajidMvulle\Bundle\VehicleBundle\Entity\Make;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -11,8 +12,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class MakeSelectorType.
- *
- * @DI\FormType()
  *
  * @author Majid Mvulle <majid@majidmvulle.com>
  */
@@ -23,15 +22,6 @@ class MakeType extends EntityType
      */
     private $managerRegistry;
 
-    /**
-     * MakeType Constructor.
-     *
-     * @DI\InjectParams({
-     *  "managerRegistry" = @DI\Inject("doctrine")
-     * })
-     *
-     * @param ManagerRegistry $managerRegistry
-     */
     public function __construct(ManagerRegistry $managerRegistry)
     {
         $this->managerRegistry = $managerRegistry;
@@ -41,7 +31,7 @@ class MakeType extends EntityType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'placeholder' => '',
@@ -59,27 +49,18 @@ class MakeType extends EntityType
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getParent()
+    public function getParent(): string
     {
         return EntityType::class;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->getBlockPrefix();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
-        return 'majidmvulle_make_selector_type';
+        return '';
     }
 }

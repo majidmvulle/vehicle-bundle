@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MajidMvulle\Bundle\VehicleBundle\Admin;
 
-use MajidMvulle\Bundle\VehicleBundle\Entity\Model;
 use MajidMvulle\Bundle\VehicleBundle\Form\ModelYearType;
 use MajidMvulle\Bundle\VehicleBundle\Form\TransmissionType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -25,11 +26,14 @@ class ModelTypeAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $form)
+    protected function configureFormFields(FormMapper $form): void
     {
         $form->add('trim', TextType::class, ['label' => 'Trim Name'])
             ->add('model')
-            ->add('engine', IntegerType::class, ['help' => 'e.g. 2500 for a 2.5 litre engine', 'required' => false])
+            ->add('engine', IntegerType::class, [
+                'help' => 'e.g. 2500 for a 2.5 litre engine',
+                'required' => false,
+            ])
             ->add('cylinders', IntegerType::class, ['required' => false])
             ->add('transmission', TransmissionType::class, ['required' => false])
             ->add('seats', IntegerType::class, ['required' => false])
@@ -41,7 +45,7 @@ class ModelTypeAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureListFields(ListMapper $list)
+    protected function configureListFields(ListMapper $list): void
     {
         $list->addIdentifier('id')
             ->add('trim')
@@ -61,7 +65,7 @@ class ModelTypeAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureDatagridFilters(DatagridMapper $filter)
+    protected function configureDatagridFilters(DatagridMapper $filter): void
     {
         $filter->add('trim')->add('model')->add('isGcc');
     }
@@ -69,7 +73,7 @@ class ModelTypeAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureShowFields(ShowMapper $show)
+    protected function configureShowFields(ShowMapper $show): void
     {
         $show->add('id')
             ->add('trim')
@@ -87,7 +91,7 @@ class ModelTypeAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureRoutes(RouteCollection $collection)
+    protected function configureRoutes(RouteCollection $collection): void
     {
         $collection->clearExcept(['create', 'edit', 'show', 'list']);
     }

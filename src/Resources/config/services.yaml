@@ -1,0 +1,66 @@
+services:
+    MajidMvulle\Bundle\VehicleBundle\Repository\MakeRepository:
+        factory: ['@doctrine.orm.entity_manager.abstract', getRepository]
+        arguments:
+            - MajidMvulleVehicleBundle:Make
+
+    MajidMvulle\Bundle\VehicleBundle\Command\YearifyCommand:
+        tags:
+            - { name: console.command, command: majidmvulle:vehicle:yearify }
+        arguments:
+            - '@doctrine.orm.entity_manager.abstract'
+
+    MajidMvulle\Bundle\VehicleBundle\Form\MakeType:
+        arguments:
+            - '@doctrine'
+        tags:
+            - { name: form.type }
+
+    MajidMvulle\Bundle\VehicleBundle\Form\ModelSelectorType:
+        arguments:
+            - '@doctrine.orm.entity_manager.abstract'
+        tags:
+            - { name: form.type }
+
+    MajidMvulle\Bundle\VehicleBundle\Form\ModelTypeSelectorType:
+        arguments:
+            - '@doctrine.orm.entity_manager.abstract'
+        tags:
+            - { name: form.type }
+
+    MajidMvulle\Bundle\VehicleBundle\Twig\ColorTwigExtension:
+        tags:
+            - { name: twig.extension }
+        public: false
+
+    MajidMvulle\Bundle\VehicleBundle\Twig\ConditionTwigExtension:
+        tags:
+            - { name: twig.extension }
+        public: false
+
+    MajidMvulle\Bundle\VehicleBundle\Twig\MakeTwigExtension:
+        arguments:
+            - MajidMvulle\Bundle\VehicleBundle\Repository\MakeRepository
+        tags:
+            - { name: twig.extension }
+        public: false
+
+    MajidMvulle\Bundle\VehicleBundle\Twig\MileageTwigExtension:
+        tags:
+            - { name: twig.extension }
+        public: false
+
+    MajidMvulle\Bundle\VehicleBundle\Twig\ModelYearTwigExtension:
+        tags:
+            - { name: twig.extension }
+        public: false
+
+    MajidMvulle\Bundle\VehicleBundle\Twig\OptionsTwigExtension:
+        tags:
+            - { name: twig.extension }
+        public: false
+
+    MajidMvulle\Bundle\VehicleBundle\Twig\SpecificationTwigExtension:
+        tags:
+            - { name: twig.extension }
+        public: false
