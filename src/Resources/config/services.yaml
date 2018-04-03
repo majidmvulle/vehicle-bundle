@@ -1,6 +1,6 @@
 services:
     MajidMvulle\Bundle\VehicleBundle\Repository\MakeRepository:
-        factory: ['@doctrine.orm.entity_manager.abstract', getRepository]
+        factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments:
             - MajidMvulleVehicleBundle:Make
 
@@ -8,7 +8,7 @@ services:
         tags:
             - { name: console.command, command: majidmvulle:vehicle:yearify }
         arguments:
-            - '@doctrine.orm.entity_manager.abstract'
+            - '@doctrine.orm.entity_manager'
 
     MajidMvulle\Bundle\VehicleBundle\Form\MakeType:
         arguments:
@@ -18,13 +18,13 @@ services:
 
     MajidMvulle\Bundle\VehicleBundle\Form\ModelSelectorType:
         arguments:
-            - '@doctrine.orm.entity_manager.abstract'
+            - '@doctrine.orm.entity_manager'
         tags:
             - { name: form.type }
 
     MajidMvulle\Bundle\VehicleBundle\Form\ModelTypeSelectorType:
         arguments:
-            - '@doctrine.orm.entity_manager.abstract'
+            - '@doctrine.orm.entity_manager'
         tags:
             - { name: form.type }
 
@@ -40,7 +40,7 @@ services:
 
     MajidMvulle\Bundle\VehicleBundle\Twig\MakeTwigExtension:
         arguments:
-            - MajidMvulle\Bundle\VehicleBundle\Repository\MakeRepository
+            - '@MajidMvulle\Bundle\VehicleBundle\Repository\MakeRepository'
         tags:
             - { name: twig.extension }
         public: false
