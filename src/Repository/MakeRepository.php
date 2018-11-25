@@ -33,15 +33,13 @@ class MakeRepository extends EntityRepository
         return $data;
     }
 
-    public function findAllPaginated(ListOptions $options): array
+    public function findAllPaginated(): array
     {
         $qb = $this->_em->createQueryBuilder('make')
             ->select('make')
             ->from(Make::class, 'make')
             ->where('make.active = :active')
             ->orderBy('make.name', 'ASC')
-            ->setFirstResult($options->getOffset())
-            ->setMaxResults($options->getLimit())
             ->setParameter(':active', true);
 
         return $this->getResults($qb);

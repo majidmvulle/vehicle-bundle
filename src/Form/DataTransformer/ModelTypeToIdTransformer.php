@@ -38,7 +38,7 @@ class ModelTypeToIdTransformer implements DataTransformerInterface
     public function reverseTransform($modelTypeId): ?ModelType
     {
         if (!$modelTypeId) {
-            return;
+            return null;
         }
 
         $modelType = $this->manager->getRepository('MajidMvulleVehicleBundle:ModelType')->find($modelTypeId);

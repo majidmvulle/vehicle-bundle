@@ -4,6 +4,11 @@ services:
         arguments:
             - MajidMvulleVehicleBundle:Make
 
+    MajidMvulle\Bundle\VehicleBundle\Repository\ModelRepository:
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments:
+            - MajidMvulleVehicleBundle:Model
+
     MajidMvulle\Bundle\VehicleBundle\Command\YearifyCommand:
         tags:
             - { name: console.command, command: majidmvulle:vehicle:yearify }

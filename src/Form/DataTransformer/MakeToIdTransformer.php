@@ -38,7 +38,7 @@ class MakeToIdTransformer implements DataTransformerInterface
     public function reverseTransform($makeId): ?Make
     {
         if (!$makeId) {
-            return;
+            return null;
         }
 
         $make = $this->manager->getRepository(Make::class)->find($makeId);

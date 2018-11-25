@@ -38,7 +38,7 @@ class ModelToIdTransformer implements DataTransformerInterface
     public function reverseTransform($modelId): ?Model
     {
         if (!$modelId) {
-            return;
+            return null;
         }
 
         $model = $this->manager->getRepository(Model::class)->find($modelId);
