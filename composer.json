@@ -18,7 +18,7 @@
     "doctrine/orm": "^2.6",
     "gedmo/doctrine-extensions": "^2.4",
     "jms/serializer": "^1.13.0",
-    "majidmvulle/utility-bundle": "^1.0.0",
+    "majidmvulle/utility-bundle": "^2.0.0",
     "sensio/framework-extra-bundle": "^5.1",
     "sonata-project/admin-bundle": "^3.29.0",
     "symfony/form": "^3.0 || ^4.0",
@@ -35,11 +35,11 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@bitbucket.org:majidmvulle/vehicle-bundle.git"
+      "url": "git@github.com:majidmvulle/vehicle-bundle.git"
     },
     {
       "type": "vcs",
-      "url": "git@bitbucket.org:majidmvulle/utility-bundle.git"
+      "url": "git@github.com:majidmvulle/utility-bundle.git"
     }
   ]
 }
