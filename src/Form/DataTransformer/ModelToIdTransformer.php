@@ -26,7 +26,7 @@ class ModelToIdTransformer implements DataTransformerInterface
         $this->manager = $manager;
     }
 
-    public function transform($model): string
+    public function transform($model): int
     {
         if (null === $model) {
             return '';
