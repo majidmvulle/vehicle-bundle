@@ -26,13 +26,13 @@ class ModelTypeToIdTransformer implements DataTransformerInterface
         $this->manager = $manager;
     }
 
-    public function transform($modelType): string
+    public function transform($modelType): ?int
     {
         if (null === $modelType) {
-            return '';
+            return null;
         }
 
-        return $modelType->getId();
+        return (int) $modelType->getId();
     }
 
     public function reverseTransform($modelTypeId): ?ModelType

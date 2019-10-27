@@ -26,13 +26,13 @@ class MakeToIdTransformer implements DataTransformerInterface
         $this->manager = $manager;
     }
 
-    public function transform($make): string
+    public function transform($make): ?int
     {
         if (null === $make) {
-            return '';
+            return null;
         }
 
-        return $make->getId();
+        return (int) $make->getId();
     }
 
     public function reverseTransform($makeId): ?Make
